@@ -1,0 +1,7 @@
+.vs/
+Build/
+Library/
+Packages/
+Profiler Data/
+Temp/
+obj/
