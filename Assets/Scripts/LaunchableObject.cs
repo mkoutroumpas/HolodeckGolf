@@ -57,7 +57,9 @@ public class LaunchableObject : MonoBehaviour
 
                 _isTrajectoryDrawn = true;
 
-                TrajectoryDataContent.OnLaunchEvent(gameObject.transform.parent.name + " Total: " + Vector3.Distance(TotalPosition, StartPosition).ToString());
+                TrajectoryDataContent tdc = Camera.main.GetComponentInChildren<TrajectoryDataContent>();
+
+                tdc.OnLaunchEvent(gameObject.transform.parent.name + " Total: " + Vector3.Distance(TotalPosition, StartPosition).ToString());
 
                 return;
             }
@@ -83,7 +85,9 @@ public class LaunchableObject : MonoBehaviour
         {
             CarryPosition = _ballRigidbody.gameObject.transform.position;
 
-            TrajectoryDataContent.OnLaunchEvent(gameObject.transform.parent.name + " Carry: " + Vector3.Distance(CarryPosition, StartPosition).ToString());
+            TrajectoryDataContent tdc = Camera.main.GetComponentInChildren<TrajectoryDataContent>();
+
+            tdc.OnLaunchEvent(gameObject.transform.parent.name + " Carry: " + Vector3.Distance(CarryPosition, StartPosition).ToString());
         }
 
         _numOfCollisions++;

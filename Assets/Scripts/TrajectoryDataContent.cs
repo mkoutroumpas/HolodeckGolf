@@ -4,12 +4,16 @@ using UnityEngine.UI;
 
 public class TrajectoryDataContent : MonoBehaviour {
 
-    private static string _contentText;
-    private static int _lineCount;
+    private int _lineCount;
 
     private void Update()
     {
-        if (!string.IsNullOrEmpty(_contentText))
+        
+    }
+
+    public void OnLaunchEvent(string data)
+    {
+        if (!string.IsNullOrEmpty(data))
         {
             Text text = GetComponent<Text>();
 
@@ -18,15 +22,9 @@ public class TrajectoryDataContent : MonoBehaviour {
                 text.text = string.Empty;
             }
 
-            text.text += _contentText + Environment.NewLine;
+            text.text += data + Environment.NewLine;
 
             _lineCount++;
-            _contentText = null;
         }
-    }
-
-    public static void OnLaunchEvent(string data)
-    {
-        _contentText = data;
     }
 }

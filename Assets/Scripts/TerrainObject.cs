@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TerrainObject : MonoBehaviour
 {
@@ -8,10 +7,11 @@ public class TerrainObject : MonoBehaviour
         if (collision.gameObject.name == null)
             return;
 
-        if (collision.gameObject.name == "Ball")
+        if (collision.gameObject.name.Contains("Ball") ||
+            collision.gameObject.tag == "Ball")
         {
             LaunchableObject launchableObject = collision.gameObject.GetComponentInChildren<LaunchableObject>();
-            if (launchableObject != null) 
+            if (launchableObject != null)
             {
                 launchableObject.ReceiveCollision(collision);
             }
