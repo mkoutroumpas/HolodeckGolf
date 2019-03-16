@@ -5,123 +5,126 @@ using UnityEngine.EventSystems;
 
 public class LaunchableObject : MonoBehaviour
 {
-    private List<Vector3> points;
-    private float speed;
-    private bool isLaunched;
-    private bool isTrajectoryDrawn;
-    private Rigidbody ballRigidbody;
-    private float countTime;
-    private LineRenderer trajectoryRenderer;
+    private List<Vector3> _points;
+    private float _speed;
+    private bool _isLaunched;
+    private bool _isTrajectoryDrawn;
+    private Rigidbody _ballRigidbody;
+    private float _countTime;
+    private LineRenderer _trajectoryRenderer;
+    private int _numOfCollisions;
 
-    private Vector3 startPosition;
-    private Vector3 carryPosition;
-    private Vector3 totalPosition;
+    private readonly float _preLaunchDelay = 0.5f;
+    private readonly float _postLaunchDelay = 0.5f;
 
-    private int numOfCollisions;
-
-    private readonly float preLaunchDelay = 0.5f;
-    private readonly float postLaunchDelay = 0.5f;
+    public Vector3 StartPosition { get; private set; }
+    public Vector3 CarryPosition { get; private set; }
+    public Vector3 TotalPosition { get; private set; }
 
     public Vector3 LaunchForce;
 
     private void Start()
     {
-        points = new List<Vector3>();
+        _points = new List<Vector3>();
 
-        carryPosition = new Vector3(0, 0, 0);
-        totalPosition = new Vector3(0, 0, 0);
-        startPosition = new Vector3(0, 0, 0);
+        CarryPosition = new Vector3(0, 0, 0);
+        TotalPosition = new Vector3(0, 0, 0);
+        StartPosition = new Vector3(0, 0, 0);
 
-        numOfCollisions = 0;
+        _numOfCollisions = 0;
     }
 
     private void Update()
     {
-        if (ballRigidbody == null || trajectoryRenderer == null)
+        if (_ballRigidbody == null || _trajectoryRenderer == null)
             return;
 
-        speed = ballRigidbody.velocity.magnitude;
+        _speed = _ballRigidbody.velocity.magnitude;
 
-        if (isLaunched)
+        if (_isLaunched)
         {
-            if (speed < 0.1)
+            if (_speed < 0.1)
             {
-                ballRigidbody.velocity = new Vector3(0, 0, 0);
+                _ballRigidbody.velocity = new Vector3(0, 0, 0);
 
-                trajectoryRenderer.positionCount = points.Count;
+                _trajectoryRenderer.positionCount = _points.Count;
 
-                trajectoryRenderer.SetPositions(points.ToArray()); // See: https://answers.unity.com/questions/1226025/how-to-render-a-linerenderer-through-multiple-poin.html
+                _trajectoryRenderer.SetPositions(_points.ToArray()); // See: https://answers.unity.com/questions/1226025/how-to-render-a-linerenderer-through-multiple-poin.html
 
-                totalPosition = ballRigidbody.gameObject.transform.position;
+                TotalPosition = _ballRigidbody.gameObject.transform.position;
 
-                isLaunched = false;
+                _isLaunched = false;
 
-                isTrajectoryDrawn = true;
+                _isTrajectoryDrawn = true;
+
+                TrajectoryDataContent.OnLaunchEvent(gameObject.transform.parent.name + " Total: " + Vector3.Distance(TotalPosition, StartPosition).ToString());
 
                 return;
             }
         }
 
-        if (!isTrajectoryDrawn)
+        if (!_isTrajectoryDrawn)
         {
-            if (Mathf.Abs(Time.time - countTime) >= 0.05f)
+            if (Mathf.Abs(Time.time - _countTime) >= 0.05f)
             {
-                points.Add(ballRigidbody.gameObject.transform.position);
+                _points.Add(_ballRigidbody.gameObject.transform.position);
 
-                countTime = Time.time;
+                _countTime = Time.time;
             }
         }
     }
 
     public void ReceiveCollision(Collision c)
     {
-        if (ballRigidbody == null)
+        if (_ballRigidbody == null)
             return;
 
-        if (numOfCollisions == 0)
+        if (_numOfCollisions == 0)
         {
-            carryPosition = ballRigidbody.gameObject.transform.position;
+            CarryPosition = _ballRigidbody.gameObject.transform.position;
+
+            TrajectoryDataContent.OnLaunchEvent(gameObject.transform.parent.name + " Carry: " + Vector3.Distance(CarryPosition, StartPosition).ToString());
         }
 
-        numOfCollisions++;
+        _numOfCollisions++;
     }
 
     private IEnumerator Launch(Rigidbody rigidbody)
     {
-        countTime = Time.time;
+        _countTime = Time.time;
 
-        if (trajectoryRenderer.positionCount > 0)
+        if (_trajectoryRenderer.positionCount > 0)
         {
-            points.Clear();
+            _points.Clear();
 
-            trajectoryRenderer.positionCount = 0;
-            trajectoryRenderer.SetPositions(points.ToArray());
+            _trajectoryRenderer.positionCount = 0;
+            _trajectoryRenderer.SetPositions(_points.ToArray());
         }
 
-        isTrajectoryDrawn = false;
+        _isTrajectoryDrawn = false;
 
-        yield return new WaitForSeconds(preLaunchDelay);
+        yield return new WaitForSeconds(_preLaunchDelay);
 
         rigidbody.AddForce(LaunchForce, ForceMode.Impulse);
 
-        yield return new WaitForSeconds(postLaunchDelay);
+        yield return new WaitForSeconds(_postLaunchDelay);
 
-        isLaunched = true;
+        _isLaunched = true;
     }
 
     public void OnLaunch()
     {
-        ballRigidbody = gameObject.GetComponentInParent<Rigidbody>();
+        _ballRigidbody = gameObject.GetComponentInParent<Rigidbody>();
 
-        if (ballRigidbody == null)
+        if (_ballRigidbody == null)
             return;
 
-        trajectoryRenderer = gameObject.transform.parent.GetComponentInChildren<LineRenderer>();
+        _trajectoryRenderer = gameObject.transform.parent.GetComponentInChildren<LineRenderer>();
 
-        if (trajectoryRenderer == null)
+        if (_trajectoryRenderer == null)
             return;
 
-        startPosition = ballRigidbody.gameObject.transform.position;
+        StartPosition = _ballRigidbody.gameObject.transform.position;
 
         EventTrigger eventTrigger = gameObject.GetComponentInParent<EventTrigger>();
 
@@ -130,6 +133,6 @@ public class LaunchableObject : MonoBehaviour
             eventTrigger.triggers.Clear();
         }
 
-        StartCoroutine(Launch(ballRigidbody));
+        StartCoroutine(Launch(_ballRigidbody));
     }
 }

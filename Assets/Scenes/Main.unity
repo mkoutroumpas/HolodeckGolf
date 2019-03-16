@@ -823,8 +823,9 @@ GameObject:
   - component: {fileID: 127875025}
   - component: {fileID: 127875027}
   - component: {fileID: 127875026}
+  - component: {fileID: 127875028}
   m_Layer: 0
-  m_Name: Carry
+  m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -836,17 +837,17 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 127875024}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalRotation: {x: 0, y: 0.30070576, z: 0, w: 0.953717}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000008140398}
   m_LocalScale: {x: 0.0005, y: 0.0005, z: 0.0005}
   m_Children: []
   m_Father: {fileID: 374098075}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 35, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.514, y: 0.094}
-  m_SizeDelta: {x: 400, y: 800}
+  m_AnchoredPosition: {x: 0.277, y: -0.037}
+  m_SizeDelta: {x: 800, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &127875026
 MonoBehaviour:
@@ -860,7 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.039159846, g: 0.12108998, b: 0.754717, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -880,13 +881,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Carry: 0.0 m'
+  m_Text: Hit a shot!
 --- !u!222 &127875027
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 127875024}
+--- !u!114 &127875028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 127875024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c152f66e0d022449a343ea22be2016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &130957554
 Prefab:
   m_ObjectHideFlags: 0
@@ -2697,7 +2709,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f04c85d4cb3028547a5794c12cc46a64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f04c85d4cb3028547a5794c12cc46a64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7325,13 +7337,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 771159036}
-  m_LocalRotation: {x: 0.19708623, y: -0.26050395, z: 0.18700805, w: 0.9264571}
-  m_LocalPosition: {x: -5, y: 14.5, z: -323.05}
+  m_LocalRotation: {x: 0.2151566, y: -0.31044328, z: -0.05104337, w: 0.92451465}
+  m_LocalPosition: {x: -11.5, y: 29.91, z: -301.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 27.556002, y: -27.472002, z: 15.964001}
+  m_LocalEulerAnglesHint: {x: 21.478, y: -39.826, z: -14.181001}
 --- !u!54 &771159041
 Rigidbody:
   m_ObjectHideFlags: 0
