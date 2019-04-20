@@ -2739,7 +2739,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: f04c85d4cb3028547a5794c12cc46a64, type: 3}
       propertyPath: m_Name
-      value: Bays
+      value: Bays.old
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f04c85d4cb3028547a5794c12cc46a64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16521,6 +16521,10 @@ Prefab:
     - target: {fileID: 100000, guid: b99ae6929634c2a429e097adf46d2f26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b99ae6929634c2a429e097adf46d2f26, type: 3}
+      propertyPath: m_Name
+      value: Bays
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b99ae6929634c2a429e097adf46d2f26, type: 3}
