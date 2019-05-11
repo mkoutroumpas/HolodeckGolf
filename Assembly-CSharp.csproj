@@ -170,6 +170,7 @@
     <Compile Include="Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
     <Compile Include="Assets\Main.cs" />
     <Compile Include="Assets\Scripts\FramerateCounter.cs" />
+    <Compile Include="Assets\Scripts\HeadTracker.cs" />
     <Compile Include="Assets\Scripts\LaunchableObject.cs" />
     <Compile Include="Assets\Scripts\TerrainObject.cs" />
     <Compile Include="Assets\Scripts\TrajectoryDataContent.cs" />
