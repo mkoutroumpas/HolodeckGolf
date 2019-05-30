@@ -59,7 +59,7 @@ public class LaunchableObject : MonoBehaviour
 
                 TrajectoryDataContent tdc = Camera.main.GetComponentInChildren<TrajectoryDataContent>();
 
-                tdc.OnLaunchEvent(gameObject.transform.parent.name + " Total: " + Vector3.Distance(TotalPosition, StartPosition).ToString());
+                tdc.OnLaunchEvent(gameObject.transform.name + " Total: " + Vector3.Distance(TotalPosition, StartPosition).ToString());
 
                 return;
             }
@@ -87,7 +87,7 @@ public class LaunchableObject : MonoBehaviour
 
             TrajectoryDataContent tdc = Camera.main.GetComponentInChildren<TrajectoryDataContent>();
 
-            tdc.OnLaunchEvent(gameObject.transform.parent.name + " Carry: " + Vector3.Distance(CarryPosition, StartPosition).ToString());
+            tdc.OnLaunchEvent(gameObject.transform.name + " Carry: " + Vector3.Distance(CarryPosition, StartPosition).ToString());
         }
 
         _numOfCollisions++;
@@ -118,19 +118,19 @@ public class LaunchableObject : MonoBehaviour
 
     public void OnLaunch()
     {
-        _ballRigidbody = gameObject.GetComponentInParent<Rigidbody>();
+        _ballRigidbody = gameObject.GetComponent<Rigidbody>();
 
         if (_ballRigidbody == null)
             return;
 
-        _trajectoryRenderer = gameObject.transform.parent.GetComponentInChildren<LineRenderer>();
+        _trajectoryRenderer = gameObject.transform.GetComponentInChildren<LineRenderer>();
 
         if (_trajectoryRenderer == null)
             return;
 
         StartPosition = _ballRigidbody.gameObject.transform.position;
 
-        EventTrigger eventTrigger = gameObject.GetComponentInParent<EventTrigger>();
+        EventTrigger eventTrigger = gameObject.GetComponent<EventTrigger>();
 
         if (eventTrigger != null)
         {
