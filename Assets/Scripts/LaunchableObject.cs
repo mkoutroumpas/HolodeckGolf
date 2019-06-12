@@ -5,17 +5,18 @@ using UnityEngine.EventSystems;
 
 public class LaunchableObject : MonoBehaviour
 {
-    private List<Vector3> _points;
     private float _speed;
     private bool _isLaunched;
     private bool _isTrajectoryDrawn;
-    private Rigidbody _ballRigidbody;
     private float _countTime;
-    private LineRenderer _trajectoryRenderer;
     private int _numOfCollisions;
 
-    private readonly float _preLaunchDelay = 0.5f;
-    private readonly float _postLaunchDelay = 0.5f;
+    private List<Vector3> _points;
+    private Rigidbody _ballRigidbody;
+    private LineRenderer _trajectoryRenderer;
+
+    private readonly float _preLaunchDelay = 0.25f;
+    private readonly float _postLaunchDelay = 0.25f;
 
     public Vector3 StartPosition { get; private set; }
     public Vector3 CarryPosition { get; private set; }
@@ -94,7 +95,7 @@ public class LaunchableObject : MonoBehaviour
         _numOfCollisions++;
     }
 
-    private IEnumerator Launch(Rigidbody rigidbody)
+    private IEnumerator Launch(Rigidbody rigidbody, Vector3 force = default(Vector3))
     {
         _countTime = Time.time;
 
@@ -117,7 +118,7 @@ public class LaunchableObject : MonoBehaviour
         _isLaunched = true;
     }
 
-    public void OnLaunch()
+    public void OnLaunch(Vector3 force = default(Vector3))
     {
         _ballRigidbody = gameObject.GetComponent<Rigidbody>();
 
@@ -138,6 +139,11 @@ public class LaunchableObject : MonoBehaviour
             eventTrigger.triggers.Clear();
         }
 
-        StartCoroutine(Launch(_ballRigidbody));
+        StartCoroutine(Launch(_ballRigidbody, force));
+    }
+
+    public void DoLaunch()
+    {
+        OnLaunch(); // See: looks like Unity GameObject event handlers don't like optional arguments ...
     }
 }

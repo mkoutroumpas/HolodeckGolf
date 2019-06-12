@@ -4004,7 +4004,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 393388155}
-          m_MethodName: OnLaunch
+          m_MethodName: DoLaunch
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -15967,7 +15967,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1510548338}
-          m_MethodName: OnLaunch
+          m_MethodName: DoLaunch
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -19856,7 +19856,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1980217243}
-          m_MethodName: OnLaunch
+          m_MethodName: DoLaunch
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
