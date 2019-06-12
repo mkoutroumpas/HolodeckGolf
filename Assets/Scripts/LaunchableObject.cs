@@ -32,6 +32,7 @@ public class LaunchableObject : MonoBehaviour
         StartPosition = new Vector3(0, 0, 0);
 
         _numOfCollisions = 0;
+
     }
 
     private void Update()

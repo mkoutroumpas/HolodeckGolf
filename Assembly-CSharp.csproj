@@ -168,10 +168,10 @@
     <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrUIHelpers.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrVRHelpers.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
-    <Compile Include="Assets\Main.cs" />
     <Compile Include="Assets\Scripts\FramerateCounter.cs" />
     <Compile Include="Assets\Scripts\HeadTracker.cs" />
     <Compile Include="Assets\Scripts\LaunchableObject.cs" />
+    <Compile Include="Assets\Scripts\Main.cs" />
     <Compile Include="Assets\Scripts\TerrainObject.cs" />
     <Compile Include="Assets\Scripts\TrajectoryDataContent.cs" />
     <None Include="Assets\Shaders\Mobile DiffuseX.shader" />
