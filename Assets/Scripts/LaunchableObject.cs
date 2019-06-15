@@ -163,6 +163,6 @@ public class LaunchableObject : MonoBehaviour
     {
         var clonedBall = Instantiate(gameObject, StartPosition, Quaternion.identity);
         var clonedBallEventTrigger = clonedBall.GetComponent<EventTrigger>();
-        clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => DoLaunch());
+        clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(clonedBall));
     }
 }
