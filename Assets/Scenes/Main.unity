@@ -934,6 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c152f66e0d022449a343ea22be2016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DecimalDigits: 2
 --- !u!1001 &130957554
 Prefab:
   m_ObjectHideFlags: 0

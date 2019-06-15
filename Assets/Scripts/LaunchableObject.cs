@@ -60,7 +60,8 @@ public class LaunchableObject : MonoBehaviour
 
                 TrajectoryDataContent tdc = Camera.main.GetComponentInChildren<TrajectoryDataContent>();
 
-                tdc.OnLaunchEvent(gameObject.transform.name + " Total: " + Vector3.Distance(TotalPosition, StartPosition).ToString());
+                var decimalDigits = tdc.DecimalDigits >= 0 ? tdc.DecimalDigits : 0;
+                tdc.OnLaunchEvent(gameObject.transform.name + " Total: " + Vector3.Distance(TotalPosition, StartPosition).ToString("n" + decimalDigits));
 
                 return;
             }
@@ -88,7 +89,8 @@ public class LaunchableObject : MonoBehaviour
 
             TrajectoryDataContent tdc = Camera.main.GetComponentInChildren<TrajectoryDataContent>();
 
-            tdc.OnLaunchEvent(gameObject.transform.name + " Carry: " + Vector3.Distance(CarryPosition, StartPosition).ToString());
+            var decimalDigits = tdc.DecimalDigits >= 0 ? tdc.DecimalDigits : 0;
+            tdc.OnLaunchEvent(gameObject.transform.name + " Carry: " + Vector3.Distance(CarryPosition, StartPosition).ToString("n" + decimalDigits));
         }
 
         _numOfCollisions++;
