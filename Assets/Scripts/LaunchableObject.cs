@@ -22,6 +22,8 @@ public class LaunchableObject : MonoBehaviour
     public Vector3 CarryPosition { get; private set; }
     public Vector3 TotalPosition { get; private set; }
 
+    public bool LaunchedAndThenStopped { get; private set; }
+
     public Vector3 LaunchForce;
 
     private void Start()
@@ -31,6 +33,8 @@ public class LaunchableObject : MonoBehaviour
         CarryPosition = new Vector3(0, 0, 0);
         TotalPosition = new Vector3(0, 0, 0);
         StartPosition = new Vector3(0, 0, 0);
+
+        LaunchedAndThenStopped = false;
 
         _numOfCollisions = 0;
     }
@@ -58,10 +62,14 @@ public class LaunchableObject : MonoBehaviour
 
                 _isTrajectoryDrawn = true;
 
+                LaunchedAndThenStopped = true;
+
                 TrajectoryDataContent tdc = Camera.main.GetComponentInChildren<TrajectoryDataContent>();
 
                 var decimalDigits = tdc.DecimalDigits >= 0 ? tdc.DecimalDigits : 0;
                 tdc.OnLaunchEvent(gameObject.transform.name + " Total: " + Vector3.Distance(TotalPosition, StartPosition).ToString("n" + decimalDigits));
+
+                OnPostLaunch();
 
                 return;
             }
@@ -146,5 +154,12 @@ public class LaunchableObject : MonoBehaviour
     public void DoLaunch()
     {
         OnLaunch(); // See: looks like Unity GameObject event handlers don't like optional arguments ...
+    }
+
+    private void OnPostLaunch()
+    {
+        var clonedBall = Instantiate(gameObject, StartPosition, Quaternion.identity);
+        var clonedBallEventTrigger = clonedBall.GetComponent<EventTrigger>();
+        clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => DoLaunch());
     }
 }
