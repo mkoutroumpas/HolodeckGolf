@@ -127,7 +127,7 @@ public class LaunchableObject : MonoBehaviour
         _isLaunched = true;
     }
 
-    public void OnLaunch(Vector3 force = default(Vector3))
+    private void OnLaunch(Vector3 force = default(Vector3))
     {
         _ballRigidbody = gameObject.GetComponent<Rigidbody>();
 
