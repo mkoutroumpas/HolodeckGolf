@@ -139,7 +139,7 @@ public class LaunchableObject : MonoBehaviour
         if (_trajectoryRenderer == null)
             return;
 
-        StartPosition = _ballRigidbody.go.transform.position;
+        StartPosition = _ballRigidbody.gameObject.transform.position;
 
         EventTrigger eventTrigger = go.GetComponent<EventTrigger>();
 
@@ -153,7 +153,7 @@ public class LaunchableObject : MonoBehaviour
 
     public void DoLaunch()
     {
-        OnLaunch(); // See: looks like Unity GameObject event handlers don't like optional arguments ...
+        OnLaunch(gameObject); // See: looks like Unity GameObject event handlers don't like optional arguments ...
     }
 
     private void OnPostLaunch()
