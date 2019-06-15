@@ -18,9 +18,9 @@ public class LaunchableObject : MonoBehaviour
     private readonly float _preLaunchDelay = 0.25f;
     private readonly float _postLaunchDelay = 0.25f;
 
-    public readonly float Respawn_XDeviation = 0.5f;
-    public readonly float Respawn_ZDeviation = 0.55f;
-    public readonly float LaunchForce_Deviation = 50f;
+    public readonly float Respawn_XDeviation = 0.1f;
+    public readonly float Respawn_ZDeviation = 0.15f;
+    public readonly float LaunchForce_Deviation = 25f;
 
     public Vector3 StartPosition { get; private set; }
     public Vector3 CarryPosition { get; private set; }
@@ -124,7 +124,7 @@ public class LaunchableObject : MonoBehaviour
 
         yield return new WaitForSeconds(_preLaunchDelay);
 
-        rigidbody.AddForce(LaunchForce, ForceMode.Impulse);
+        rigidbody.AddForce(force != default(Vector3) ? force : LaunchForce, ForceMode.Impulse);
 
         yield return new WaitForSeconds(_postLaunchDelay);
 
@@ -170,9 +170,8 @@ public class LaunchableObject : MonoBehaviour
 
         var clonedBall = Instantiate(gameObject, cloneStartPosition, Quaternion.identity);
         var cbLO = clonedBall.GetComponent<LaunchableObject>();
-        cbLO.LaunchForce = goLO.LaunchForce.DeviateBy(goLO.LaunchForce_Deviation);
 
         var clonedBallEventTrigger = clonedBall.GetComponent<EventTrigger>();
-        clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(clonedBall));
+        clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(clonedBall, cbLO.LaunchForce.DeviateBy(cbLO.LaunchForce_Deviation)));
     }
 }
