@@ -20,6 +20,7 @@ public class LaunchableObject : MonoBehaviour
 
     public readonly float Respawn_XDeviation = 0.1f;
     public readonly float Respawn_ZDeviation = 0.15f;
+    public readonly float LaunchForce_Deviation = 20f;
 
     public Vector3 StartPosition { get; private set; }
     public Vector3 CarryPosition { get; private set; }
@@ -168,7 +169,7 @@ public class LaunchableObject : MonoBehaviour
 
         var cbLO = clonedBall.GetComponent<LaunchableObject>();
         cbLO.StartPosition = new Vector3(cbLO.StartPosition.x.DeviateBy(Respawn_XDeviation), cbLO.StartPosition.y, cbLO.StartPosition.z.DeviateBy(Respawn_ZDeviation));
-        
+
         var clonedBallEventTrigger = clonedBall.GetComponent<EventTrigger>();
         clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(clonedBall));
     }
