@@ -18,4 +18,9 @@ public static class ExtensionMethods // See: https://answers.unity.com/questions
 
         return Random.Range(f - maxDeviation, f + maxDeviation);
     }
+
+    public static Vector3 DeviateBy(this Vector3 v, float maxDeviation)
+    {
+        return new Vector3(v.x.DeviateBy(maxDeviation), v.y.DeviateBy(maxDeviation), v.z.DeviateBy(maxDeviation));
+    }
 }
