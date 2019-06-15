@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public static class ExtensionMethods // See: https://answers.unity.com/questions/854251/how-do-you-add-an-ui-eventtrigger-by-script.html
 {
+    private static readonly System.Random _random = new System.Random();
+
     public static void AddListener(this EventTrigger trigger, EventTriggerType eventType, System.Action<PointerEventData> listener)
     {
         EventTrigger.Entry entry = new EventTrigger.Entry();
@@ -16,7 +19,7 @@ public static class ExtensionMethods // See: https://answers.unity.com/questions
         if (maxDeviation < 0 || Mathf.Abs(f) < maxDeviation)
             return f;
 
-        return Random.Range(f - maxDeviation, f + maxDeviation);
+        return (float)(_random.NextDouble() * 2 * maxDeviation + (f - maxDeviation));
     }
 
     public static Vector3 DeviateBy(this Vector3 v, float maxDeviation)
