@@ -6,10 +6,9 @@ public class TrajectoryDataContent : MonoBehaviour {
 
     private int _lineCount;
 
-    private void Update()
-    {
-        
-    }
+    public int DecimalDigits { get; set; }
+
+    private void Update() { }
 
     public void OnLaunchEvent(string data)
     {
