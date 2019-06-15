@@ -162,6 +162,10 @@ public class LaunchableObject : MonoBehaviour
     private void OnPostLaunch()
     {
         var clonedBall = Instantiate(gameObject, StartPosition, Quaternion.identity);
+
+        var cbLO = clonedBall.GetComponent<LaunchableObject>();
+        cbLO.StartPosition = new Vector3(cbLO.StartPosition.x, cbLO.StartPosition.y, cbLO.StartPosition.z);
+        
         var clonedBallEventTrigger = clonedBall.GetComponent<EventTrigger>();
         clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(clonedBall));
     }
