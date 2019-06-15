@@ -127,21 +127,21 @@ public class LaunchableObject : MonoBehaviour
         _isLaunched = true;
     }
 
-    private void OnLaunch(Vector3 force = default(Vector3))
+    private void OnLaunch(GameObject go, Vector3 force = default(Vector3))
     {
-        _ballRigidbody = gameObject.GetComponent<Rigidbody>();
+        _ballRigidbody = go.GetComponent<Rigidbody>();
 
         if (_ballRigidbody == null)
             return;
 
-        _trajectoryRenderer = gameObject.transform.GetComponentInChildren<LineRenderer>();
+        _trajectoryRenderer = go.transform.GetComponentInChildren<LineRenderer>();
 
         if (_trajectoryRenderer == null)
             return;
 
-        StartPosition = _ballRigidbody.gameObject.transform.position;
+        StartPosition = _ballRigidbody.go.transform.position;
 
-        EventTrigger eventTrigger = gameObject.GetComponent<EventTrigger>();
+        EventTrigger eventTrigger = go.GetComponent<EventTrigger>();
 
         if (eventTrigger != null)
         {
