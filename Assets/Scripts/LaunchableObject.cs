@@ -165,10 +165,12 @@ public class LaunchableObject : MonoBehaviour
 
     private void OnPostLaunch()
     {
-        var clonedBall = Instantiate(gameObject, StartPosition, Quaternion.identity);
+        var goLO = gameObject.GetComponent<LaunchableObject>();
+        var cloneStartPosition = new Vector3(goLO.StartPosition.x.DeviateBy(Respawn_XDeviation), goLO.StartPosition.y, goLO.StartPosition.z.DeviateBy(Respawn_ZDeviation));
 
+        var clonedBall = Instantiate(gameObject, cloneStartPosition, Quaternion.identity);
         var cbLO = clonedBall.GetComponent<LaunchableObject>();
-        cbLO.StartPosition = new Vector3(cbLO.StartPosition.x.DeviateBy(Respawn_XDeviation), cbLO.StartPosition.y, cbLO.StartPosition.z.DeviateBy(Respawn_ZDeviation));
+        cbLO.LaunchForce = cbLO.LaunchForce.DeviateBy(goLO.LaunchForce_Deviation);
 
         var clonedBallEventTrigger = clonedBall.GetComponent<EventTrigger>();
         clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(clonedBall));

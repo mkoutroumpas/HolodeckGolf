@@ -13,7 +13,7 @@ public static class ExtensionMethods // See: https://answers.unity.com/questions
 
     public static float DeviateBy(this float f, float maxDeviation)
     {
-        if (maxDeviation > f || maxDeviation < 0)
+        if (maxDeviation < 0 || Mathf.Abs(f) < maxDeviation)
             return f;
 
         return Random.Range(f - maxDeviation, f + maxDeviation);
