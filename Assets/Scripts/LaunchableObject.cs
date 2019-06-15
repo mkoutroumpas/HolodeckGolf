@@ -129,6 +129,9 @@ public class LaunchableObject : MonoBehaviour
 
     private void OnLaunch(GameObject go, Vector3 force = default(Vector3))
     {
+        if (go == null)
+            return;
+
         _ballRigidbody = go.GetComponent<Rigidbody>();
 
         if (_ballRigidbody == null)
