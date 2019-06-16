@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class LaunchableObject : MonoBehaviour
 {
     private float _speed;
-    private bool _isLaunched;
     private bool _isTrajectoryDrawn;
     private float _countTime;
     private int _numOfCollisions;
@@ -21,6 +20,8 @@ public class LaunchableObject : MonoBehaviour
     public readonly float Respawn_XDeviation = 0.1f;
     public readonly float Respawn_ZDeviation = 0.15f;
     public readonly float LaunchForce_Deviation = 25f;
+
+    public bool IsLaunched { get; private set; }
 
     public Vector3 StartPosition { get; private set; }
     public Vector3 CarryPosition { get; private set; }
@@ -50,7 +51,8 @@ public class LaunchableObject : MonoBehaviour
 
         _speed = _ballRigidbody.velocity.magnitude;
 
-        if (_isLaunched)
+        var goLO = _ballRigidbody.gameObject.GetComponent<LaunchableObject>();
+        if (goLO != null && goLO.IsLaunched)
         {
             if (_speed < 0.1)
             {
@@ -60,9 +62,9 @@ public class LaunchableObject : MonoBehaviour
 
                 _trajectoryRenderer.SetPositions(_points.ToArray()); // See: https://answers.unity.com/questions/1226025/how-to-render-a-linerenderer-through-multiple-poin.html
 
-                TotalPosition = _ballRigidbody.gameObject.transform.position;
+                goLO.TotalPosition = _ballRigidbody.gameObject.transform.position;
 
-                _isLaunched = false;
+                goLO.IsLaunched = false;
 
                 _isTrajectoryDrawn = true;
 
@@ -71,7 +73,7 @@ public class LaunchableObject : MonoBehaviour
                 TrajectoryDataContent tdc = Camera.main.GetComponentInChildren<TrajectoryDataContent>();
 
                 var decimalDigits = tdc.DecimalDigits >= 0 ? tdc.DecimalDigits : 0;
-                tdc.OnLaunchEvent(gameObject.transform.name + " Total: " + Vector3.Distance(TotalPosition, StartPosition).ToString("n" + decimalDigits));
+                tdc.OnLaunchEvent(_ballRigidbody.gameObject.transform.name + " Total: " + Vector3.Distance(goLO.TotalPosition, goLO.StartPosition).ToString("n" + decimalDigits));
 
                 OnPostLaunch();
 
@@ -92,17 +94,18 @@ public class LaunchableObject : MonoBehaviour
 
     public void ReceiveCollision(Collision c)
     {
-        if (_ballRigidbody == null)
+        var goLO = c.gameObject.GetComponent<LaunchableObject>();
+        if (goLO == null || !goLO.IsLaunched)
             return;
 
         if (_numOfCollisions == 0)
         {
-            CarryPosition = _ballRigidbody.gameObject.transform.position;
+            goLO.CarryPosition = c.rigidbody.gameObject.transform.position;
 
             TrajectoryDataContent tdc = Camera.main.GetComponentInChildren<TrajectoryDataContent>();
 
             var decimalDigits = tdc.DecimalDigits >= 0 ? tdc.DecimalDigits : 0;
-            tdc.OnLaunchEvent(gameObject.transform.name + " Carry: " + Vector3.Distance(CarryPosition, StartPosition).ToString("n" + decimalDigits));
+            tdc.OnLaunchEvent(c.rigidbody.gameObject.transform.name + " Carry: " + Vector3.Distance(goLO.CarryPosition, goLO.StartPosition).ToString("n" + decimalDigits));
         }
 
         _numOfCollisions++;
@@ -128,7 +131,8 @@ public class LaunchableObject : MonoBehaviour
 
         yield return new WaitForSeconds(_postLaunchDelay);
 
-        _isLaunched = true;
+        var goLO = rigidbody.gameObject.GetComponent<LaunchableObject>();
+        goLO.IsLaunched = true;
     }
 
     private void OnLaunch(GameObject go, Vector3 force = default(Vector3))
@@ -146,7 +150,14 @@ public class LaunchableObject : MonoBehaviour
         if (_trajectoryRenderer == null)
             return;
 
-        StartPosition = _ballRigidbody.gameObject.transform.position;
+        var goLO = go.GetComponent<LaunchableObject>();
+
+        if (goLO == null)
+            return;
+
+        goLO.StartPosition = _ballRigidbody.gameObject.transform.position;
+        goLO.CarryPosition = new Vector3(0, 0, 0);
+        goLO.TotalPosition = new Vector3(0, 0, 0);
 
         EventTrigger eventTrigger = go.GetComponent<EventTrigger>();
 
