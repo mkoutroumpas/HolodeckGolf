@@ -2,15 +2,13 @@
 
 public class TerrainObject : MonoBehaviour
 {
-    private readonly static string _BallLiteral = "Ball";
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == null)
             return;
 
-        if (collision.gameObject.name.Contains(_BallLiteral) ||
-            collision.gameObject.tag == _BallLiteral)
+        if (collision.gameObject.name.Contains(Common.ObjectFilterLiteral) ||
+            collision.gameObject.tag == Common.ObjectFilterLiteral)
         {
             LaunchableObject launchableObject = collision.gameObject.GetComponentInChildren<LaunchableObject>();
             if (launchableObject != null)
