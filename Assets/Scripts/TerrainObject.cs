@@ -8,7 +8,7 @@ public class TerrainObject : MonoBehaviour
             return;
 
         if (collision.gameObject.name.Contains(Common.ObjectFilterLiteral) ||
-            collision.gameObject.tag == Common.ObjectFilterLiteral)
+            collision.gameObject.tag.Contains(Common.ObjectFilterLiteral))
         {
             LaunchableObject launchableObject = collision.gameObject.GetComponentInChildren<LaunchableObject>();
             if (launchableObject != null)
