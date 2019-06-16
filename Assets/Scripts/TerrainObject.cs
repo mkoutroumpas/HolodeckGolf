@@ -2,18 +2,18 @@
 
 public class TerrainObject : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision c)
     {
-        if (collision.gameObject.name == null)
+        if (c.gameObject.name == null)
             return;
 
-        if (collision.gameObject.name.Contains(Common.ObjectFilterLiteral) ||
-            collision.gameObject.tag.Contains(Common.ObjectFilterLiteral))
+        if (c.gameObject.name.Contains(Common.ObjectFilterLiteral) ||
+            c.gameObject.tag.Contains(Common.ObjectFilterLiteral))
         {
-            LaunchableObject launchableObject = collision.gameObject.GetComponentInChildren<LaunchableObject>();
-            if (launchableObject != null)
+            LaunchableObject lO = c.gameObject.GetComponentInChildren<LaunchableObject>();
+            if (lO != null)
             {
-                launchableObject.ReceiveCollision(collision);
+                lO.ReceiveCollision(c);
             }
         }
     }
