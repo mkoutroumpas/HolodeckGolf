@@ -132,22 +132,22 @@ public class LaunchableObject : MonoBehaviour
         goLO.IsLaunched = true;
     }
 
-    private IEnumerator OnLaunch(GameObject go, Vector3 force = default(Vector3))
+    private void OnLaunch(GameObject go, Vector3 force = default(Vector3))
     {
         if (go == null)
-            yield break;
+            return;
 
         _ballRigidbody = go.GetComponent<Rigidbody>();
         if (_ballRigidbody == null)
-            yield break;
+            return;
 
         _trajectoryRenderer = go.transform.GetComponentInChildren<LineRenderer>();
         if (_trajectoryRenderer == null)
-            yield break;
+            return;
 
         var goLO = go.GetComponent<LaunchableObject>();
         if (goLO == null)
-            yield break;
+            return;
 
         goLO.StartPosition = _ballRigidbody.gameObject.transform.position;
         goLO.CarryPosition = new Vector3(0, 0, 0);
@@ -160,8 +160,6 @@ public class LaunchableObject : MonoBehaviour
             eventTrigger.triggers.Clear();
         }
 
-        yield return new WaitForSeconds(_secondsToLaunch);
-
         StartCoroutine(Launch(_ballRigidbody, force));
     }
 
@@ -172,7 +170,7 @@ public class LaunchableObject : MonoBehaviour
 
     public void DoLaunch()
     {
-        StartCoroutine(OnLaunch(gameObject)); // See: looks like Unity GameObject event handlers don't like optional arguments ...
+        OnLaunch(gameObject); // See: looks like Unity GameObject event handlers don't like optional arguments ...
     }
 
     public void CancelLaunch()
@@ -190,6 +188,6 @@ public class LaunchableObject : MonoBehaviour
 
         var clonedBallEventTrigger = clonedBall.GetComponent<EventTrigger>();
         clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(clonedBall, cbLO.LaunchForce.DeviateBy(cbLO.LaunchForce_Deviation)));
-        clonedBallEventTrigger.AddListener(EventTriggerType.PointerExit, (o) => OnCancelLaunch(clonedBall));
+        ////clonedBallEventTrigger.AddListener(EventTriggerType.PointerExit, (o) => OnCancelLaunch(clonedBall));
     }
 }
