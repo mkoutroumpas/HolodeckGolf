@@ -11,6 +11,7 @@ public class LaunchableObject : MonoBehaviour
     private int _numOfCollisions;
     private float _speedStopThreshold = 0.1f;
     private float _timePointSamplingThreshold = 0.05f;
+    private int _secondsToLaunch = 5;
 
     private List<Vector3> _points;
     private Rigidbody _ballRigidbody;
@@ -162,9 +163,19 @@ public class LaunchableObject : MonoBehaviour
         StartCoroutine(Launch(_ballRigidbody, force));
     }
 
+    private void OnCancelLaunch(GameObject go)
+    {
+
+    }
+
     public void DoLaunch()
     {
         OnLaunch(gameObject); // See: looks like Unity GameObject event handlers don't like optional arguments ...
+    }
+
+    public void CancelLaunch()
+    {
+        OnCancelLaunch(gameObject);
     }
 
     private void OnPostLaunch()
@@ -177,5 +188,6 @@ public class LaunchableObject : MonoBehaviour
 
         var clonedBallEventTrigger = clonedBall.GetComponent<EventTrigger>();
         clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(clonedBall, cbLO.LaunchForce.DeviateBy(cbLO.LaunchForce_Deviation)));
+        clonedBallEventTrigger.AddListener(EventTriggerType.PointerExit, (o) => OnCancelLaunch(clonedBall));
     }
 }
