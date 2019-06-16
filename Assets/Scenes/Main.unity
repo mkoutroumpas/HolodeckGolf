@@ -4015,7 +4015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f85addfc404ac6449b6b4a25c9ee170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LaunchForce: {x: 50, y: 100, z: 80}
+  LaunchForce: {x: 5, y: 100, z: 80}
 --- !u!1001 &404941213
 Prefab:
   m_ObjectHideFlags: 0
@@ -15706,7 +15706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f85addfc404ac6449b6b4a25c9ee170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LaunchForce: {x: 80, y: 20, z: 70}
+  LaunchForce: {x: -8, y: 20, z: 70}
 --- !u!1001 &1511893595
 Prefab:
   m_ObjectHideFlags: 0
@@ -19804,7 +19804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f85addfc404ac6449b6b4a25c9ee170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LaunchForce: {x: 70, y: 40, z: 50}
+  LaunchForce: {x: -3, y: 40, z: 70}
 --- !u!1001 &1996614932
 Prefab:
   m_ObjectHideFlags: 0
