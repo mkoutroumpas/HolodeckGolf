@@ -17,6 +17,5 @@ public class FramerateCounter : MonoBehaviour {
         text.text = fps.ToString();
 
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-
     }
 }

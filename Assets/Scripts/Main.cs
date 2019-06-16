@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Linq;
 
 public class Main : MonoBehaviour {
 
@@ -7,10 +6,4 @@ public class Main : MonoBehaviour {
     {
         QualitySettings.vSyncCount = 0;
     }
-	
-	void Update ()
-    {
-        
-	}
- 
 }
