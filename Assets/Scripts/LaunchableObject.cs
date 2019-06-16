@@ -141,17 +141,14 @@ public class LaunchableObject : MonoBehaviour
             return;
 
         _ballRigidbody = go.GetComponent<Rigidbody>();
-
         if (_ballRigidbody == null)
             return;
 
         _trajectoryRenderer = go.transform.GetComponentInChildren<LineRenderer>();
-
         if (_trajectoryRenderer == null)
             return;
 
         var goLO = go.GetComponent<LaunchableObject>();
-
         if (goLO == null)
             return;
 
