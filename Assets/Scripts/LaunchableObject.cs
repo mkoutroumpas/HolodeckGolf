@@ -27,8 +27,6 @@ public class LaunchableObject : MonoBehaviour
     public Vector3 CarryPosition { get; private set; }
     public Vector3 TotalPosition { get; private set; }
 
-    public bool LaunchedAndThenStopped { get; private set; }
-
     public Vector3 LaunchForce;
 
     private void Start()
@@ -38,8 +36,6 @@ public class LaunchableObject : MonoBehaviour
         CarryPosition = new Vector3(0, 0, 0);
         TotalPosition = new Vector3(0, 0, 0);
         StartPosition = new Vector3(0, 0, 0);
-
-        LaunchedAndThenStopped = false;
 
         _numOfCollisions = 0;
     }
@@ -67,8 +63,6 @@ public class LaunchableObject : MonoBehaviour
                 goLO.IsLaunched = false;
 
                 _isTrajectoryDrawn = true;
-
-                LaunchedAndThenStopped = true;
 
                 TrajectoryDataContent tdc = Camera.main.GetComponentInChildren<TrajectoryDataContent>();
 
