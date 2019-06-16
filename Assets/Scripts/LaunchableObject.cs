@@ -10,7 +10,7 @@ public class LaunchableObject : MonoBehaviour
     private float _countTime;
     private int _numOfCollisions;
     private float _speedStopThreshold = 0.1f;
-    private float _timePointThreshold = 0.05f;
+    private float _timePointSamplingThreshold = 0.05f;
 
     private List<Vector3> _points;
     private Rigidbody _ballRigidbody;
@@ -79,7 +79,7 @@ public class LaunchableObject : MonoBehaviour
 
         if (!_isTrajectoryDrawn)
         {
-            if (Mathf.Abs(Time.time - _countTime) >= _timePointThreshold)
+            if (Mathf.Abs(Time.time - _countTime) >= _timePointSamplingThreshold)
             {
                 _points.Add(_ballRigidbody.gameObject.transform.position);
 
