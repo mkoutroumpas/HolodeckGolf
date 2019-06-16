@@ -9,6 +9,7 @@ public class LaunchableObject : MonoBehaviour
     private bool _isTrajectoryDrawn;
     private float _countTime;
     private int _numOfCollisions;
+    private float _speedStopThreshold = 0.1f;
 
     private List<Vector3> _points;
     private Rigidbody _ballRigidbody;
@@ -50,7 +51,7 @@ public class LaunchableObject : MonoBehaviour
         var goLO = _ballRigidbody.gameObject.GetComponent<LaunchableObject>();
         if (goLO != null && goLO.IsLaunched)
         {
-            if (_speed < 0.1)
+            if (_speed < _speedStopThreshold)
             {
                 _ballRigidbody.velocity = new Vector3(0, 0, 0);
 
