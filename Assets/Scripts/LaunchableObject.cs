@@ -132,22 +132,22 @@ public class LaunchableObject : MonoBehaviour
         goLO.IsLaunched = true;
     }
 
-    private void OnLaunch(GameObject go, Vector3 force = default(Vector3))
+    private IEnumerator OnLaunch(GameObject go, Vector3 force = default(Vector3))
     {
         if (go == null)
-            return;
+            yield break;
 
         _ballRigidbody = go.GetComponent<Rigidbody>();
         if (_ballRigidbody == null)
-            return;
+            yield break;
 
         _trajectoryRenderer = go.transform.GetComponentInChildren<LineRenderer>();
         if (_trajectoryRenderer == null)
-            return;
+            yield break;
 
         var goLO = go.GetComponent<LaunchableObject>();
         if (goLO == null)
-            return;
+            yield break;
 
         goLO.StartPosition = _ballRigidbody.gameObject.transform.position;
         goLO.CarryPosition = new Vector3(0, 0, 0);
@@ -160,6 +160,8 @@ public class LaunchableObject : MonoBehaviour
             eventTrigger.triggers.Clear();
         }
 
+        yield return new WaitForSeconds(_secondsToLaunch);
+
         StartCoroutine(Launch(_ballRigidbody, force));
     }
 
@@ -170,7 +172,7 @@ public class LaunchableObject : MonoBehaviour
 
     public void DoLaunch()
     {
-        OnLaunch(gameObject); // See: looks like Unity GameObject event handlers don't like optional arguments ...
+        StartCoroutine(OnLaunch(gameObject)); // See: looks like Unity GameObject event handlers don't like optional arguments ...
     }
 
     public void CancelLaunch()
