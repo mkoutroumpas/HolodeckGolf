@@ -16,7 +16,7 @@ public class LaunchableObject : MonoBehaviour
     private Rigidbody _ballRigidbody;
     private LineRenderer _trajectoryRenderer;
 
-    private readonly float _preLaunchDelay = 0.25f;
+    private readonly float _preLaunchDelay = 0.5f;
     private readonly float _postLaunchDelay = 0.25f;
 
     public readonly float Respawn_XDeviation = 0.1f;
