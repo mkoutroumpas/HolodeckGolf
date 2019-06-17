@@ -127,10 +127,7 @@ public class LaunchableObject : MonoBehaviour
 
         if (!Common.IsPointerLookingToGameObject(rigidbody.gameObject))
         {
-            var cbLO = rigidbody.gameObject.GetComponent<LaunchableObject>();
-
-            var clonedBallEventTrigger = rigidbody.gameObject.GetComponent<EventTrigger>();
-            clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(rigidbody.gameObject, cbLO.LaunchForce.DeviateBy(cbLO.LaunchForce_Deviation)));
+            MakeBallLaunchable(rigidbody.gameObject);
 
             yield break;
         }
@@ -194,9 +191,18 @@ public class LaunchableObject : MonoBehaviour
         var cloneStartPosition = new Vector3(goLO.StartPosition.x.DeviateBy(Respawn_XDeviation), goLO.StartPosition.y, goLO.StartPosition.z.DeviateBy(Respawn_ZDeviation));
 
         var clonedBall = Instantiate(gameObject, cloneStartPosition, Quaternion.identity);
-        var cbLO = clonedBall.GetComponent<LaunchableObject>();
 
-        var clonedBallEventTrigger = clonedBall.GetComponent<EventTrigger>();
-        clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(clonedBall, cbLO.LaunchForce.DeviateBy(cbLO.LaunchForce_Deviation)));
+        MakeBallLaunchable(clonedBall);
+    }
+
+    private void MakeBallLaunchable(GameObject go)
+    {
+        if (go == null)
+            return;
+
+        var cbLO = go.GetComponent<LaunchableObject>();
+
+        var clonedBallEventTrigger = go.GetComponent<EventTrigger>();
+        clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(go, cbLO.LaunchForce.DeviateBy(cbLO.LaunchForce_Deviation)));
     }
 }
