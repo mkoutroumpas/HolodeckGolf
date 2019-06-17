@@ -11,7 +11,6 @@ public class LaunchableObject : MonoBehaviour
     private int _numOfCollisions;
     private float _speedStopThreshold = 0.1f;
     private float _timePointSamplingThreshold = 0.05f;
-    private int _secondsToLaunch = 5;
 
     private List<Vector3> _points;
     private Rigidbody _ballRigidbody;
