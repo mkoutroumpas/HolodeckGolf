@@ -121,16 +121,24 @@ public class LaunchableObject : MonoBehaviour
 
         _isTrajectoryDrawn = false;
 
+        var goLO = rigidbody.gameObject.GetComponent<LaunchableObject>();
+
         yield return new WaitForSeconds(_preLaunchDelay);
 
         if (!Common.IsPointerLookingToGameObject(rigidbody.gameObject))
+        {
+            var cbLO = rigidbody.gameObject.GetComponent<LaunchableObject>();
+
+            var clonedBallEventTrigger = rigidbody.gameObject.GetComponent<EventTrigger>();
+            clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(rigidbody.gameObject, cbLO.LaunchForce.DeviateBy(cbLO.LaunchForce_Deviation)));
+
             yield break;
+        }
 
         rigidbody.AddForce(force != default(Vector3) ? force : LaunchForce, ForceMode.Impulse);
 
         yield return new WaitForSeconds(_postLaunchDelay);
 
-        var goLO = rigidbody.gameObject.GetComponent<LaunchableObject>();
         goLO.IsLaunched = true;
     }
 
@@ -190,6 +198,5 @@ public class LaunchableObject : MonoBehaviour
 
         var clonedBallEventTrigger = clonedBall.GetComponent<EventTrigger>();
         clonedBallEventTrigger.AddListener(EventTriggerType.PointerEnter, (o) => OnLaunch(clonedBall, cbLO.LaunchForce.DeviateBy(cbLO.LaunchForce_Deviation)));
-        ////clonedBallEventTrigger.AddListener(EventTriggerType.PointerExit, (o) => OnCancelLaunch(clonedBall));
     }
 }

@@ -18,8 +18,9 @@ public class Common
         List<RaycastResult> raycastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointer, raycastResults);
 
-        var _focusedGameObjects = raycastResults.Where(r => r.gameObject.name == gameObject.name);
+        var focusedGameObjects = raycastResults.Where(r => r.gameObject.name == gameObject.name);
+        var ret = focusedGameObjects != null && focusedGameObjects.Count() > 0;
 
-        return _focusedGameObjects != null && _focusedGameObjects.Count() > 0;
+        return ret;
     }
 }
