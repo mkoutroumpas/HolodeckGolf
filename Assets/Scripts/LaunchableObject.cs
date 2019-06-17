@@ -16,7 +16,7 @@ public class LaunchableObject : MonoBehaviour
     private Rigidbody _ballRigidbody;
     private LineRenderer _trajectoryRenderer;
 
-    private readonly float _preLaunchDelay = 0.5f;
+    private readonly float _preLaunchDelay = 3f;
     private readonly float _postLaunchDelay = 0.25f;
 
     public readonly float Respawn_XDeviation = 0.1f;
@@ -122,6 +122,9 @@ public class LaunchableObject : MonoBehaviour
         _isTrajectoryDrawn = false;
 
         yield return new WaitForSeconds(_preLaunchDelay);
+
+        if (!Common.IsPointerLookingToGameObject(rigidbody.gameObject))
+            yield break;
 
         rigidbody.AddForce(force != default(Vector3) ? force : LaunchForce, ForceMode.Impulse);
 
