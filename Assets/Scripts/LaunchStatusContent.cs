@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class LaunchStatusContent : MonoBehaviour {
 
@@ -6,7 +7,8 @@ public class LaunchStatusContent : MonoBehaviour {
     {
         if (!string.IsNullOrEmpty(data))
         {
-            
+            Text text = GetComponent<Text>();
+            text.text = data;
         }
     }
 }

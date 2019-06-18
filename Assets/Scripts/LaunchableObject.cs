@@ -125,18 +125,26 @@ public class LaunchableObject : MonoBehaviour
 
         LaunchStatusContent lsc = Camera.main.GetComponentInChildren<LaunchStatusContent>();
 
+        lsc.OnLaunchStatus("Launching ...");
+
         yield return new WaitForSeconds(_preLaunchDelay);
 
         if (!Common.IsPointerLookingToGameObject(rigidbody.gameObject))
         {
             MakeBallLaunchable(rigidbody.gameObject);
 
+            lsc.OnLaunchStatus("No launch.");
+
             yield break;
         }
 
         rigidbody.AddForce(force != default(Vector3) ? force : LaunchForce, ForceMode.Impulse);
 
+        lsc.OnLaunchStatus("Launched!");
+
         yield return new WaitForSeconds(_postLaunchDelay);
+
+        lsc.OnLaunchStatus("No launch.");
 
         goLO.IsLaunched = true;
     }
