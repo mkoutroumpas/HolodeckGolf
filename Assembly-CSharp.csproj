@@ -173,6 +173,7 @@
     <Compile Include="Assets\Scripts\FramerateCounter.cs" />
     <Compile Include="Assets\Scripts\HeadTracker.cs" />
     <Compile Include="Assets\Scripts\LaunchableObject.cs" />
+    <Compile Include="Assets\Scripts\LaunchStatusContent.cs" />
     <Compile Include="Assets\Scripts\Main.cs" />
     <Compile Include="Assets\Scripts\TerrainObject.cs" />
     <Compile Include="Assets\Scripts\TrajectoryDataContent.cs" />

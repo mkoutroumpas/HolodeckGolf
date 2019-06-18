@@ -123,6 +123,8 @@ public class LaunchableObject : MonoBehaviour
 
         var goLO = rigidbody.gameObject.GetComponent<LaunchableObject>();
 
+
+
         yield return new WaitForSeconds(_preLaunchDelay);
 
         if (!Common.IsPointerLookingToGameObject(rigidbody.gameObject))
