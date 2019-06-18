@@ -123,7 +123,7 @@ public class LaunchableObject : MonoBehaviour
 
         var goLO = rigidbody.gameObject.GetComponent<LaunchableObject>();
 
-
+        LaunchStatusContent lsc = Camera.main.GetComponentInChildren<LaunchStatusContent>();
 
         yield return new WaitForSeconds(_preLaunchDelay);
 
