@@ -3,7 +3,12 @@ using UnityEngine.UI;
 
 public class LaunchStatusContent : MonoBehaviour {
 
-    public void OnLaunchStatus(string data)
+    public void Update()
+    {
+        
+    }
+
+    public void OnLaunchStatus(string data, bool startCountdown = false)
     {
         if (!string.IsNullOrEmpty(data))
         {
