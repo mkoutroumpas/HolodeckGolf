@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 
 public class LaunchStatusContent : MonoBehaviour {
+    private bool _startCountdown;
 
     public void Update()
     {
@@ -10,6 +11,8 @@ public class LaunchStatusContent : MonoBehaviour {
 
     public void OnLaunchStatus(string data, bool startCountdown = false)
     {
+        _startCountdown = startCountdown;
+
         if (!string.IsNullOrEmpty(data))
         {
             Text text = GetComponent<Text>();
