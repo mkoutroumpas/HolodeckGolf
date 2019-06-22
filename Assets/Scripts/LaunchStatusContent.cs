@@ -25,18 +25,21 @@ public class LaunchStatusContent : MonoBehaviour {
 
     public void OnLaunchStatus(string data = "", float launchDelay = 0f)
     {
-        _startCountdown = false;
-
         if (launchDelay > 0) 
         {
             _startCountdown = true;
             _launchDelay = launchDelay;
         }
-        else if (_launchDelay == 0)
+        else 
         {
-            if (!string.IsNullOrEmpty(data))
+            _startCountdown = false;
+
+            if (_launchDelay == 0)
             {
-                DisplayText(data);
+                if (!string.IsNullOrEmpty(data))
+                {
+                    DisplayText(data);
+                }
             }
         }
     }
