@@ -23,7 +23,7 @@ public class LaunchStatusContent : MonoBehaviour {
         }
     }
 
-    public void OnLaunchStatus(string data, float launchDelay = 0f)
+    public void OnLaunchStatus(string data = "", float launchDelay = 0f)
     {
         if (launchDelay > 0) 
         {
