@@ -28,18 +28,16 @@ public class LaunchStatusContent : MonoBehaviour {
         if (launchDelay > 0) 
         {
             _startCountdown = true;
+
             _launchDelay = launchDelay;
         }
         else 
         {
             _startCountdown = false;
 
-            if (_launchDelay == 0)
+            if (!string.IsNullOrEmpty(data))
             {
-                if (!string.IsNullOrEmpty(data))
-                {
-                    DisplayText(data);
-                }
+                DisplayText(data);
             }
         }
     }
