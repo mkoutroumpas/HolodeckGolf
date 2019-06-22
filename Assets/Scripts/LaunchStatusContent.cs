@@ -25,6 +25,8 @@ public class LaunchStatusContent : MonoBehaviour {
 
     public void OnLaunchStatus(string data = "", float launchDelay = 0f)
     {
+        _startCountdown = false;
+
         if (launchDelay > 0) 
         {
             _startCountdown = true;
@@ -37,10 +39,6 @@ public class LaunchStatusContent : MonoBehaviour {
                 DisplayText(data);
             }
         }
-        else 
-        {
-            _startCountdown = false;
-        } 
     }
 
     private void DisplayText(string data)
