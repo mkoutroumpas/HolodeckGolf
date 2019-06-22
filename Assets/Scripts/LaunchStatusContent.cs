@@ -6,7 +6,10 @@ public class LaunchStatusContent : MonoBehaviour {
 
     public void Update()
     {
-        
+        if (_startCountdown)
+        {
+
+        }
     }
 
     public void OnLaunchStatus(string data, bool startCountdown = false)
