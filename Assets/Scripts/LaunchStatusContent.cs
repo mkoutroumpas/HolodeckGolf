@@ -4,8 +4,10 @@ using UnityEngine.UI;
 public class LaunchStatusContent : MonoBehaviour {
     private bool _startCountdown;
     private float _launchDelay;
-    private float _nextActionTime = 0f;
+    private int _nextActionTime = 0;
     private int _interval = 1;
+
+    private float _lastLaunchedTime = 0f;
 
     public void Update()
     {
@@ -14,22 +16,25 @@ public class LaunchStatusContent : MonoBehaviour {
             if (Time.time > _nextActionTime)
             {
                 _nextActionTime += _interval;
-                DisplayText("Launching in " + (_launchDelay - _nextActionTime) + " ...");
+
+                DisplayText("Launching in " + (_launchDelay - ((int)Time.time - (int)_lastLaunchedTime)) + " ...");
             }
-        }
-        else
-        {
-            _nextActionTime = 0f;
         }
     }
 
-    public void OnLaunchStatus(string data = "", float launchDelay = 0f)
+    public void Start()
+    {
+        _nextActionTime = 0;
+    }
+
+    public void OnLaunchStatus(string data = "", int launchDelay = 0)
     {
         if (launchDelay > 0) 
         {
-            _startCountdown = true;
-
             _launchDelay = launchDelay;
+            _lastLaunchedTime = Time.time;
+
+            _startCountdown = true;
         }
         else 
         {
