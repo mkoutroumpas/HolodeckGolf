@@ -45,6 +45,7 @@ public class LaunchStatusContent : MonoBehaviour {
     private void DisplayText(string data)
     {
         Text text = GetComponent<Text>();
-        text.text = data;
+        if (text != null)
+            text.text = data;
     }
 }
