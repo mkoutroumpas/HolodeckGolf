@@ -22,11 +22,6 @@ public class LaunchStatusContent : MonoBehaviour {
         }
     }
 
-    public void Start()
-    {
-        _nextActionTime = 0;
-    }
-
     public void OnLaunchStatus(string data = "", int launchDelay = 0)
     {
         if (launchDelay > 0) 
