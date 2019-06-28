@@ -195,6 +195,7 @@ ModelImporter:
     2100002: SuitMAT
     4300000: HeadF
     4300002: SuitGEO01
+    7400000: DeformationSystem|DeformationSystemAction
     9500000: //RootNode
     13700000: HeadF
     13700002: SuitGEO01
