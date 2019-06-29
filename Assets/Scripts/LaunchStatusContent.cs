@@ -9,7 +9,7 @@ public class LaunchStatusContent : MonoBehaviour {
 
     private float _lastLaunchedTime = 0f;
 
-    public AudioSource LaunchAudioSource;
+    public GameObject SFX;
 
     public void Update()
     {
@@ -53,12 +53,17 @@ public class LaunchStatusContent : MonoBehaviour {
 
     public void OnLaunchSFXPlay(bool launch)
     {
-        if (!launch || LaunchAudioSource == null)
+        if (!launch || SFX == null)
             return;
 
-        if (LaunchAudioSource.isPlaying)
-            LaunchAudioSource.Stop();
+        AudioSource audioSource = SFX.GetComponent<AudioSource>();
 
-        LaunchAudioSource.Play();
+        if (audioSource == null)
+            return;
+
+        if (audioSource.isPlaying)
+            audioSource.Stop();
+
+        audioSource.Play();
     }
 }

@@ -76,6 +76,14 @@
     <Compile Include="Assets\GoogleVR\Legacy\Editor\Audio\GvrAudioRoomEditor.cs" />
     <Compile Include="Assets\GoogleVR\Legacy\Editor\Audio\GvrAudioSoundfieldEditor.cs" />
     <Compile Include="Assets\GoogleVR\Legacy\Editor\Audio\GvrAudioSourceEditor.cs" />
+    <Compile Include="Assets\ResonanceAudio\Editor\ResonanceAudioBuildProcessor.cs" />
+    <Compile Include="Assets\ResonanceAudio\Editor\ResonanceAudioListenerEditor.cs" />
+    <Compile Include="Assets\ResonanceAudio\Editor\ResonanceAudioMaterialMapEditor.cs" />
+    <Compile Include="Assets\ResonanceAudio\Editor\ResonanceAudioReverbBakingWindow.cs" />
+    <Compile Include="Assets\ResonanceAudio\Editor\ResonanceAudioReverbComputer.cs" />
+    <Compile Include="Assets\ResonanceAudio\Editor\ResonanceAudioReverbProbeEditor.cs" />
+    <Compile Include="Assets\ResonanceAudio\Editor\ResonanceAudioRoomEditor.cs" />
+    <Compile Include="Assets\ResonanceAudio\Editor\ResonanceAudioSourceEditor.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/Projects/HolodeckGolf/HolodeckGolf/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
