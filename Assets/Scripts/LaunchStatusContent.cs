@@ -9,6 +9,8 @@ public class LaunchStatusContent : MonoBehaviour {
 
     private float _lastLaunchedTime = 0f;
 
+    public AudioSource LaunchAudioSource;
+
     public void Update()
     {
         if (_startCountdown)
@@ -47,5 +49,16 @@ public class LaunchStatusContent : MonoBehaviour {
         Text text = GetComponent<Text>();
         if (text != null)
             text.text = data;
+    }
+
+    public void OnLaunchSFXPlay(bool launch)
+    {
+        if (!launch || LaunchAudioSource == null)
+            return;
+
+        if (LaunchAudioSource.isPlaying)
+            LaunchAudioSource.Stop();
+
+        LaunchAudioSource.Play();
     }
 }

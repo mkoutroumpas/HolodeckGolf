@@ -140,6 +140,7 @@ public class LaunchableObject : MonoBehaviour
 
         rigidbody.AddForce(force != default(Vector3) ? force : LaunchForce, ForceMode.Impulse);
 
+        lsc.OnLaunchSFXPlay(true);
         lsc.OnLaunchStatus("Launched!");
 
         yield return new WaitForSeconds(_postLaunchDelay);
