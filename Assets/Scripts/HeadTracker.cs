@@ -14,6 +14,6 @@ public class HeadTracker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Camera.transform.position = Head.transform.position;
+        ////Camera.transform.position = Head.transform.position;
 	}
 }
