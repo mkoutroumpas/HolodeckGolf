@@ -126,6 +126,7 @@ public class LaunchableObject : MonoBehaviour
         LaunchStatusContent lsc = Camera.main.GetComponentInChildren<LaunchStatusContent>();
 
         lsc.OnLaunchStatus("Launching ...", (int)_preLaunchDelay);
+        lsc.OnStartPlayerAnimation(true);
 
         yield return new WaitForSeconds(_preLaunchDelay);
 

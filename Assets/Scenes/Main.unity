@@ -6733,6 +6733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SFX: {fileID: 1308005707}
+  Player: {fileID: 607674902}
 --- !u!114 &595831155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6974,6 +6975,10 @@ RectTransform:
   m_AnchoredPosition: {x: -6.4, y: 0.01}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &607674902 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100148, guid: f85eb7b9e198f6b4a9df956e8b24833b, type: 3}
+  m_PrefabInternal: {fileID: 492139672}
 --- !u!1001 &613213531
 Prefab:
   m_ObjectHideFlags: 0

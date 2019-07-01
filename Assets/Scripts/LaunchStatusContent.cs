@@ -10,6 +10,7 @@ public class LaunchStatusContent : MonoBehaviour {
     private float _lastLaunchedTime = 0f;
 
     public GameObject SFX;
+    public GameObject Player;
 
     public void Update()
     {
@@ -65,5 +66,15 @@ public class LaunchStatusContent : MonoBehaviour {
             audioSource.Stop();
 
         audioSource.Play();
+    }
+
+    public void OnStartPlayerAnimation(bool animate)
+    {
+        if (!animate || Player == null)
+            return;
+
+        Animator animator = Player.GetComponent<Animator>();
+        ////animator.speed = 1;
+        animator.SetTrigger("DriverStrike");
     }
 }
