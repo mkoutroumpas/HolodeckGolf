@@ -74,8 +74,6 @@ public class LaunchStatusContent : MonoBehaviour {
             return;
 
         Animator animator = Player.GetComponent<Animator>();
-        ////animator.speed = 1;
         animator.SetTrigger("DriverStrike"); //-> This works if an Idle animation is present.
-        ////animator.Play("BaseLayer.DriverStrike");
     }
 }
