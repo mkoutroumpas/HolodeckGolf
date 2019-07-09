@@ -12,8 +12,12 @@ public class Common
         if (gameObject == null)
             return false;
 
+        Vector3 p = Camera.main.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane));
+        
         PointerEventData pointer = new PointerEventData(EventSystem.current);
         pointer.position = Input.mousePosition;
+
+        Vector3 mp = Input.mousePosition;
 
         List<RaycastResult> raycastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointer, raycastResults);

@@ -4,6 +4,8 @@ public class RotationLimiter : MonoBehaviour {
 
     void LateUpdate()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         rotateCamera();
     }
 
@@ -27,4 +29,11 @@ public class RotationLimiter : MonoBehaviour {
         xRot = Mathf.Clamp(xRot, xMinLimit, xMaxLimit);
         Camera.main.transform.localEulerAngles = new Vector3(-yRot, xRot, 0);
     }
+
+    private void Start()
+    {
+        
+    }
 }
+
+
