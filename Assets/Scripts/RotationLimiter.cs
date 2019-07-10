@@ -27,6 +27,9 @@ public class RotationLimiter : MonoBehaviour {
         yRot += Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime;
         yRot = Mathf.Clamp(yRot, yMinLimit, yMaxLimit);
         xRot = Mathf.Clamp(xRot, xMinLimit, xMaxLimit);
+
+        // Maybe calculations need to be properly mapped before rotating Camera.
+
         Camera.main.transform.localEulerAngles = new Vector3(-yRot, xRot, 0);
     }
 
