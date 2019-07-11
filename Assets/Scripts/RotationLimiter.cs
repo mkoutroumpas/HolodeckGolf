@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class RotationLimiter : MonoBehaviour {
 
@@ -29,8 +30,13 @@ public class RotationLimiter : MonoBehaviour {
         xRot = Mathf.Clamp(xRot, xMinLimit, xMaxLimit);
 
         // Maybe calculations need to be properly mapped before rotating Camera.
+        // Or, check if the current Camera rotation is withing allowed range.
 
-        Camera.main.transform.localEulerAngles = new Vector3(-yRot, xRot, 0);
+        ////Camera.main.transform.localEulerAngles = new Vector3(-yRot, xRot, 0);
+
+        string _rot = "x: " + Camera.main.transform.localEulerAngles.x + ", y: " + Camera.main.transform.localEulerAngles.y + ", z: " + Camera.main.transform.localEulerAngles.z;
+
+        Console.WriteLine(_rot);
     }
 
     private void Start()
