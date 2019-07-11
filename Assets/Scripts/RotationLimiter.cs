@@ -4,7 +4,7 @@ public class RotationLimiter : MonoBehaviour {
 
     void LateUpdate()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        ////Cursor.lockState = CursorLockMode.Locked;
 
         rotateCamera();
     }
