@@ -36,7 +36,11 @@ public class RotationLimiter : MonoBehaviour {
 
         string _rot = "x: " + Camera.main.transform.localEulerAngles.x + ", y: " + Camera.main.transform.localEulerAngles.y + ", z: " + Camera.main.transform.localEulerAngles.z;
 
-        Console.WriteLine(_rot); // y: (90 , 270)
+        if ((Camera.main.transform.localEulerAngles.y > 270 || Math.Abs(360 - Camera.main.transform.localEulerAngles.y) > 270) &&
+            (Camera.main.transform.localEulerAngles.y > 90 || Math.Abs(360 - Camera.main.transform.localEulerAngles.y) > 90))
+        {
+            Console.WriteLine(_rot); // y: (90 , 270)
+        }
     }
 
     private void Start()
