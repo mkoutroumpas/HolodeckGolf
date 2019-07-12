@@ -5,9 +5,7 @@ public class RotationLimiter : MonoBehaviour {
 
     void LateUpdate()
     {
-        ////Cursor.lockState = CursorLockMode.Locked;
-
-        rotateCamera();
+        clampCameraRotation();
     }
 
     public float xSensitivity = 400.0f;
@@ -22,24 +20,23 @@ public class RotationLimiter : MonoBehaviour {
     float yRot = 0.0f;
     float xRot = 0.0f;
 
-    void rotateCamera()
+    void clampCameraRotation()
     {
-        xRot += Input.GetAxis("Mouse X") * xSensitivity * Time.deltaTime;
-        yRot += Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime;
-        yRot = Mathf.Clamp(yRot, yMinLimit, yMaxLimit);
-        xRot = Mathf.Clamp(xRot, xMinLimit, xMaxLimit);
-
-        // Maybe calculations need to be properly mapped before rotating Camera.
-        // Or, check if the current Camera rotation is withing allowed range.
-
-        ////Camera.main.transform.localEulerAngles = new Vector3(-yRot, xRot, 0);
-
         string _rot = "x: " + Camera.main.transform.localEulerAngles.x + ", y: " + Camera.main.transform.localEulerAngles.y + ", z: " + Camera.main.transform.localEulerAngles.z;
 
         if (!(Camera.main.transform.localEulerAngles.y > 270 && Camera.main.transform.localEulerAngles.y <= 360 ||
-            Camera.main.transform.localEulerAngles.y < 90 && Camera.main.transform.localEulerAngles.y >= 0))  // y: (90 , 270)
+            Camera.main.transform.localEulerAngles.y < 90 && Camera.main.transform.localEulerAngles.y >= 0))  // y: (270 , 90)
         {
             Console.WriteLine(_rot);
+
+            if (Camera.main.transform.localEulerAngles.y <= 270 && Camera.main.transform.localEulerAngles.y > 180)
+            {
+                Camera.main.transform.localEulerAngles = new Vector3(Camera.main.transform.localEulerAngles.x, 270, Camera.main.transform.localEulerAngles.z);
+            }
+            if (Camera.main.transform.localEulerAngles.y < 180 && Camera.main.transform.localEulerAngles.y >= 90)
+            {
+                Camera.main.transform.localEulerAngles = new Vector3(Camera.main.transform.localEulerAngles.x, 90, Camera.main.transform.localEulerAngles.z);
+            }
         }
     }
 
