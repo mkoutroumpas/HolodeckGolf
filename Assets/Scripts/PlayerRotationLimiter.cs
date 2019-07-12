@@ -1,26 +1,16 @@
 ﻿using System;
 using UnityEngine;
 
-public class RotationLimiter : MonoBehaviour {
+public class PlayerRotationLimiter : MonoBehaviour {
 
-    void LateUpdate()
+    public int FieldOfView = 180;
+
+    private void LateUpdate()
     {
-        clampCameraRotation();
+        ClampCameraRotation();
     }
 
-    public float xSensitivity = 400.0f;
-    public float ySensitivity = 400.0f;
-
-    public float yMinLimit = -85.0f;
-    public float yMaxLimit = 85.0f;
-
-    public float xMinLimit = -90.0f;
-    public float xMaxLimit = 90.0f;
-
-    float yRot = 0.0f;
-    float xRot = 0.0f;
-
-    void clampCameraRotation()
+    private void ClampCameraRotation()
     {
         string _rot = "x: " + Camera.main.transform.localEulerAngles.x + ", y: " + Camera.main.transform.localEulerAngles.y + ", z: " + Camera.main.transform.localEulerAngles.z;
 
