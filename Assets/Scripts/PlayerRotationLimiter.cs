@@ -12,10 +12,8 @@ public class PlayerRotationLimiter : MonoBehaviour {
 
     private void ClampCameraRotation()
     {
-        Vector3 vRot = Camera.main.transform.localEulerAngles;
-
-        ClampRotation(vRot, FOVHorizontal, Common.RotationAxis.Y);
-        ClampRotation(vRot, FOVVertical, Common.RotationAxis.X);
+        ClampRotation(Camera.main.transform.localEulerAngles, FOVHorizontal, Common.RotationAxis.Y);
+        ClampRotation(Camera.main.transform.localEulerAngles, FOVVertical, Common.RotationAxis.X);
     }
 
     private void ClampRotation(Vector3 angles, int fov, Common.RotationAxis axis)
