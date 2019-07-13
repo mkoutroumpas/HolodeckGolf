@@ -3882,12 +3882,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9392f6a878598df4fbebbac308b10e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSensitivity: 400
-  ySensitivity: 400
-  yMinLimit: -85
-  yMaxLimit: 85
-  xMinLimit: -90
-  xMaxLimit: 90
+  FOVHorizontal: 120
+  FOVVertical: 180
 --- !u!1 &393388148
 GameObject:
   m_ObjectHideFlags: 0
@@ -18806,12 +18802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9392f6a878598df4fbebbac308b10e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSensitivity: 400
-  ySensitivity: 400
-  yMinLimit: -85
-  yMaxLimit: 85
-  xMinLimit: -90
-  xMaxLimit: 90
+  FOVHorizontal: 180
+  FOVVertical: 180
 --- !u!114 &1920953628
 MonoBehaviour:
   m_ObjectHideFlags: 0
