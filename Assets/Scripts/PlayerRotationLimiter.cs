@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerRotationLimiter : MonoBehaviour {
 
@@ -18,11 +17,8 @@ public class PlayerRotationLimiter : MonoBehaviour {
 
         string _rot = "x: " + X + ", y: " + Y + ", z: " + Z;
 
-        if (!(Y > 360 - (FieldOfView / 2) && Y <= 360 ||
-            Y < (FieldOfView / 2) && Y >= 0))  // y: (270 , 90)
+        if (!(Y > 360 - (FieldOfView / 2) && Y <= 360 || Y < (FieldOfView / 2) && Y >= 0))  // y: (270 , 90)
         {
-            Console.WriteLine(_rot);
-
             if (Y <= 360 - (FieldOfView / 2) && Y > 180)
             {
                 Camera.main.transform.localEulerAngles = new Vector3(X, 360 - (FieldOfView / 2), Z);
