@@ -2,7 +2,8 @@
 
 public class PlayerRotationLimiter : MonoBehaviour {
 
-    public int FieldOfView = 180;
+    public int FOVHorizontal = 180;
+    public int FOVVertical = 180;
 
     private void LateUpdate()
     {
@@ -11,28 +12,49 @@ public class PlayerRotationLimiter : MonoBehaviour {
 
     private void ClampCameraRotation()
     {
-        float X = Camera.main.transform.localEulerAngles.x;
-        float Y = Camera.main.transform.localEulerAngles.y;
-        float Z = Camera.main.transform.localEulerAngles.z;
+        Vector3 vRot = Camera.main.transform.localEulerAngles;
+
+        float X = vRot.x;
+        float Y = vRot.y;
+        float Z = vRot.z;
 
         string _rot = "x: " + X + ", y: " + Y + ", z: " + Z;
 
-        if (!(Y > 360 - (FieldOfView / 2) && Y <= 360 || Y < (FieldOfView / 2) && Y >= 0))  // y: (270 , 90)
-        {
-            if (Y <= 360 - (FieldOfView / 2) && Y > 180)
-            {
-                Camera.main.transform.localEulerAngles = new Vector3(X, 360 - (FieldOfView / 2), Z);
-            }
-            else if (Y < 180 && Y >= FieldOfView / 2)
-            {
-                Camera.main.transform.localEulerAngles = new Vector3(X, FieldOfView / 2, Z);
-            }
-        }
+        ClampRotation(vRot, FOVHorizontal, Common.RotationAxis.Y);
+        ////ClampRotation(Camera.main.transform.localEulerAngles, FOVVertical, Common.RotationAxis.X);
     }
 
-    private void Start()
+    private void ClampRotation(Vector3 angles, int fov, Common.RotationAxis axis)
     {
-        
+        float angle = 0;
+        Vector3 rotateBy = default(Vector3);
+        Vector3 rotateByRev = default(Vector3);
+
+        switch (axis)
+        {
+            case Common.RotationAxis.X:
+                angle = angles.x;
+                rotateBy = new Vector3(360 - (fov / 2), angles.y, angles.z);
+                rotateByRev = new Vector3(fov / 2, angles.y, angles.z);
+                break;
+            case Common.RotationAxis.Y:
+                angle = angles.y;
+                rotateBy = new Vector3(angles.x, 360 - (fov / 2), angles.z);
+                rotateByRev = new Vector3(angles.x, fov / 2, angles.z);
+                break;
+        }
+
+        if (!(angle > 360 - (fov / 2) && angle <= 360 || angle < (fov / 2) && angle >= 0))
+        {
+            if (angle <= 360 - (fov / 2) && angle > 180)
+            {
+                Camera.main.transform.localEulerAngles = rotateBy;
+            }
+            else if (angle < 180 && angle >= fov / 2)
+            {
+                Camera.main.transform.localEulerAngles = rotateByRev;
+            }
+        }
     }
 }
 

@@ -7,6 +7,11 @@ public class Common
 {
     public readonly static string ObjectFilterLiteral = "Ball";
 
+    public enum RotationAxis
+    {
+        X, Y
+    }
+
     public static bool IsPointerLookingToGameObject(GameObject gameObject)
     {
         if (gameObject == null)
