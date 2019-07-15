@@ -36,7 +36,7 @@ public class PlayerRotationLimiter : MonoBehaviour {
                 break;
         }
 
-        if (!(angle > 360 - (fov / 2) && angle <= 360 || angle < (fov / 2) && angle >= 0))
+        if (!(angle > 360 - (fov / 2) || angle < (fov / 2)))
         {
             if (angle < 360 - (fov / 2) && angle > 180)
             {
