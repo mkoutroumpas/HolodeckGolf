@@ -5,6 +5,14 @@ public class PlayerRotationLimiter : MonoBehaviour {
     public int FOVHorizontal = 180;
     public int FOVVertical = 180;
 
+    private void Start()
+    {
+        if (FOVHorizontal < 0 || FOVHorizontal > 180)
+            FOVHorizontal = 180;
+        if (FOVVertical < 0 || FOVVertical > 180)
+            FOVVertical = 180;
+    }
+
     private void LateUpdate()
     {
         ClampCameraRotation();
