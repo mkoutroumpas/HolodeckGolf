@@ -46,11 +46,11 @@ public class PlayerRotationLimiter : MonoBehaviour {
 
         if (!(angle > 360 - (fov / 2) || angle < (fov / 2)))
         {
-            if (angle < 360 - (fov / 2) && angle > 180)
+            if (angle < 360 - (fov / 2) && angle > 180 && Camera.main.transform.forward.z > 0)
             {
                 Camera.main.transform.localEulerAngles = rotateBy;
             }
-            else if (angle < 180 && angle > fov / 2)
+            else if (angle < 180 && angle > fov / 2 && Camera.main.transform.forward.z < 0)
             {
                 Camera.main.transform.localEulerAngles = rotateByRev;
             }
