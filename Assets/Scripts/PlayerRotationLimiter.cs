@@ -5,6 +5,8 @@ public class PlayerRotationLimiter : MonoBehaviour {
     public int FOVHorizontal = 180;
     public int FOVVertical = 180;
 
+    private readonly int _fullCircle = 360;
+
     private void Start()
     {
         if (FOVHorizontal < 0 || FOVHorizontal > 180)
@@ -34,23 +36,23 @@ public class PlayerRotationLimiter : MonoBehaviour {
         {
             case Common.RotationAxis.X:
                 angle = angles.x;
-                rotateBy = new Vector3(360 - (fov / 2), angles.y, angles.z);
+                rotateBy = new Vector3(_fullCircle - (fov / 2), angles.y, angles.z);
                 rotateByRev = new Vector3(fov / 2, angles.y, angles.z);
                 break;
             case Common.RotationAxis.Y:
                 angle = angles.y;
-                rotateBy = new Vector3(angles.x, 360 - (fov / 2), angles.z);
+                rotateBy = new Vector3(angles.x, _fullCircle - (fov / 2), angles.z);
                 rotateByRev = new Vector3(angles.x, fov / 2, angles.z);
                 break;
         }
 
-        if (!(angle > 360 - (fov / 2) || angle < (fov / 2)))
+        if (!(angle > _fullCircle - (fov / 2) || angle < (fov / 2)))
         {
-            if (angle < 360 - (fov / 2) && angle > 180 && Camera.main.transform.forward.z > 0)
+            if (angle < _fullCircle - (fov / 2) && angle > _fullCircle / 2 && Camera.main.transform.forward.z > 0)
             {
                 Camera.main.transform.localEulerAngles = rotateBy;
             }
-            else if (angle < 180 && angle > fov / 2 && Camera.main.transform.forward.z < 0)
+            else if (angle < _fullCircle / 2 && angle > fov / 2 && Camera.main.transform.forward.z < 0)
             {
                 Camera.main.transform.localEulerAngles = rotateByRev;
             }
