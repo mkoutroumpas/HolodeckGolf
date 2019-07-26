@@ -1,9 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerRotationLocker : MonoBehaviour {
-
-    public GameObject Player;
+public class RotationLocker : MonoBehaviour {
 
     private void Start () {
 		
@@ -20,9 +18,6 @@ public class PlayerRotationLocker : MonoBehaviour {
 
     private void LockPlayerRotation()
     {
-        if (Player == null)
-            return;
-
-        Player.transform.localEulerAngles = new Vector3(0, Camera.main.transform.rotation.y, 0);
+        transform.Rotate(new Vector3(0, Camera.main.transform.rotation.y, 0));
     }
 }
