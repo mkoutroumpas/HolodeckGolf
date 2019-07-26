@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerRotationLocker : MonoBehaviour {
+
+    public GameObject Player;
 
     private void Start () {
 		
