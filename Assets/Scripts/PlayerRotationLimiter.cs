@@ -50,11 +50,13 @@ public class PlayerRotationLimiter : MonoBehaviour {
         {
             if (angle < _fullCircle - (fov / 2) && angle > _fullCircle / 2 && Camera.main.transform.forward.z > 0)
             {
-                Camera.main.transform.localEulerAngles = rotateBy;
+                ////Camera.main.transform.localEulerAngles = rotateBy;
+                Input.gyro.enabled = false;
             }
             else if (angle < _fullCircle / 2 && angle > fov / 2 && Camera.main.transform.forward.z < 0)
             {
-                Camera.main.transform.localEulerAngles = rotateByRev;
+                ////Camera.main.transform.localEulerAngles = rotateByRev;
+                Input.gyro.enabled = false;
             }
         }
     }
