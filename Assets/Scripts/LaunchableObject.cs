@@ -126,8 +126,7 @@ public class LaunchableObject : MonoBehaviour
         LaunchStatusContent lsc = Camera.main.GetComponentInChildren<LaunchStatusContent>();
 
         lsc.OnLaunchStatus("Launching ...", (int)_preLaunchDelay);
-        lsc.OnStartPlayerAnimation(true);
-
+        
         yield return new WaitForSeconds(_preLaunchDelay);
 
         if (!Common.IsPointerLookingToGameObject(rigidbody.gameObject))
@@ -141,6 +140,7 @@ public class LaunchableObject : MonoBehaviour
 
         rigidbody.AddForce(force != default(Vector3) ? force : LaunchForce, ForceMode.Impulse);
 
+        lsc.OnStartPlayerAnimation(true);
         lsc.OnLaunchSFXPlay(true);
         lsc.OnLaunchStatus("Launched!");
 
