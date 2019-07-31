@@ -215,10 +215,7 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'DeformationSystem|DeformationSystemAction.001'
-      has import animation warnings that might lower retargeting quality:\nNote: Activate
-      translation DOF on avatar to improve retargeting quality.\n\t'Spine1Part2_M'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -235,7 +232,7 @@ ModelImporter:
       name: DriverStrike
       takeName: DeformationSystem|DeformationSystemAction
       firstFrame: 0
-      lastFrame: 89
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
