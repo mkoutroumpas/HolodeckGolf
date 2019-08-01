@@ -5347,6 +5347,16 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: f85eb7b9e198f6b4a9df956e8b24833b, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed by
+        Humanoid clips.\n\tTransform 'Knee_R'\n\tTransform 'Spine1Part2_M'\n\tTransform
+        'Wrist_L'\n\tTransform 'PinkyFinger1_L'\n\tTransform 'Hip_R'\n\tTransform
+        'Toes_L'\n\tTransform 'IndexFinger3_R'\n\tTransform 'Root_M'\n\tTransform
+        'RingFinger1_R'\n\tTransform 'IndexFinger2_L'\n\tand more ...\n\tFrom animation
+        clip 'DriverStrikeIdle'"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f85eb7b9e198f6b4a9df956e8b24833b, type: 3}
   m_IsPrefabParent: 0
@@ -12212,15 +12222,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 498412, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -21.149462
+      value: -21.207
       objectReference: {fileID: 0}
     - target: {fileID: 498412, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.4842418
+      value: 1.484
       objectReference: {fileID: 0}
     - target: {fileID: 498412, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -353.90387
+      value: -353.915
       objectReference: {fileID: 0}
     - target: {fileID: 498412, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
       propertyPath: m_LocalRotation.x
