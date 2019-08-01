@@ -21,7 +21,7 @@ public class LaunchableObject : MonoBehaviour
 
     public readonly float Respawn_XDeviation = 0.1f;
     public readonly float Respawn_ZDeviation = 0.15f;
-    public readonly float LaunchForce_Deviation = 25f;
+    public readonly float LaunchForce_Deviation = 50f;
 
     public bool IsLaunched { get; private set; }
 
