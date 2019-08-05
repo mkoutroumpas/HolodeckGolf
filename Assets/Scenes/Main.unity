@@ -4653,6 +4653,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 79a712167e31e6f46b69780f1bd26a64, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3472694a881a4f34186d7cccd78b3a70, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79a712167e31e6f46b69780f1bd26a64, type: 3}
   m_IsPrefabParent: 0
@@ -5533,13 +5537,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: f85eb7b9e198f6b4a9df956e8b24833b, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed by
-        Humanoid clips.\n\tTransform 'Knee_R'\n\tTransform 'Spine1Part2_M'\n\tTransform
-        'Wrist_L'\n\tTransform 'PinkyFinger1_L'\n\tTransform 'Hip_R'\n\tTransform
-        'Toes_L'\n\tTransform 'IndexFinger3_R'\n\tTransform 'Root_M'\n\tTransform
-        'RingFinger1_R'\n\tTransform 'IndexFinger2_L'\n\tand more ...\n\tFrom animation
-        clip 'DriverStrikeIdle'"
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f85eb7b9e198f6b4a9df956e8b24833b, type: 3}
