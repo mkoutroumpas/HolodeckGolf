@@ -344,7 +344,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b77dbcf466f3c424b8629799b5d00883, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -353.994
+      value: -353.767
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b77dbcf466f3c424b8629799b5d00883, type: 3}
       propertyPath: m_LocalRotation.x
@@ -422,6 +422,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d66bbdc1288bd5d4a8d72f952a01fb21, type: 2}
+    - target: {fileID: 100002, guid: b77dbcf466f3c424b8629799b5d00883, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b77dbcf466f3c424b8629799b5d00883, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b77dbcf466f3c424b8629799b5d00883, type: 3}
   m_IsPrefabParent: 0
@@ -4403,11 +4411,11 @@ GameObject:
   - component: {fileID: 416275912}
   - component: {fileID: 416275911}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: ToggleDebug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &416275911
 BoxCollider:
@@ -4470,7 +4478,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 416275910}
   m_LocalRotation: {x: 0.45051327, y: -0.3521171, z: 0.17115432, w: 0.8023451}
-  m_LocalPosition: {x: -13.625, y: 0.297, z: -357.302}
+  m_LocalPosition: {x: -13.6, y: 0.34, z: -357.32}
   m_LocalScale: {x: 1, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13425,7 +13433,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!82 &1308005708
 AudioSource:
