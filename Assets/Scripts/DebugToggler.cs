@@ -4,20 +4,9 @@ using UnityEngine;
 public class DebugToggler : MonoBehaviour {
 
     private readonly float _delay = 3f;
-
     private bool _active = true;
 
     public GameObject[] DebugDisplays;
-
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-
-    }
 
     public void ToggleDebug()
     {
