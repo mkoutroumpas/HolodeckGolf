@@ -182,6 +182,7 @@
     <Compile Include="Assets\ResonanceAudio\Scripts\ResonanceAudioRoomManager.cs" />
     <Compile Include="Assets\ResonanceAudio\Scripts\ResonanceAudioSource.cs" />
     <Compile Include="Assets\Scripts\Common.cs" />
+    <Compile Include="Assets\Scripts\DebugToggler.cs" />
     <Compile Include="Assets\Scripts\Extensions.cs" />
     <Compile Include="Assets\Scripts\FramerateCounter.cs" />
     <Compile Include="Assets\Scripts\HeadTracker.cs" />
