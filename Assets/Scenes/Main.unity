@@ -4528,6 +4528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783637eadf186f14a8c496726ccd6431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugDisplays:
+  - {fileID: 778433513}
 --- !u!1001 &416830872
 Prefab:
   m_ObjectHideFlags: 0
