@@ -123,9 +123,9 @@ public class LaunchableObject : MonoBehaviour
 
         var goLO = rigidbody.gameObject.GetComponent<LaunchableObject>();
 
-        LaunchStatusContent lsc = Camera.main.GetComponentInChildren<LaunchStatusContent>();
+        StatusContent sc = Camera.main.GetComponentInChildren<StatusContent>();
 
-        lsc.OnLaunchStatus("Launching ...", (int)_preLaunchDelay);
+        sc.OnStatusChange("Launching in", (int)_preLaunchDelay);
         
         yield return new WaitForSeconds(_preLaunchDelay);
 
@@ -133,20 +133,20 @@ public class LaunchableObject : MonoBehaviour
         {
             MakeBallLaunchable(rigidbody.gameObject);
 
-            lsc.OnLaunchStatus("No launch.");
+            sc.OnStatusChange("Idle.");
 
             yield break;
         }
 
         rigidbody.AddForce(force != default(Vector3) ? force : LaunchForce, ForceMode.Impulse);
 
-        lsc.OnStartPlayerAnimation(true);
-        lsc.OnLaunchSFXPlay(true);
-        lsc.OnLaunchStatus("Launched!");
+        sc.OnStartPlayerAnimation(true);
+        sc.OnStatusSFXPlay(true);
+        sc.OnStatusChange("Launched!");
 
         yield return new WaitForSeconds(_postLaunchDelay);
 
-        lsc.OnLaunchStatus("No launch.");
+        sc.OnStatusChange("Idle.");
 
         goLO.IsLaunched = true;
     }

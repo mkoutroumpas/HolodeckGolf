@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class LaunchStatusContent : MonoBehaviour {
+public class StatusContent : MonoBehaviour {
     private bool _startCountdown;
-    private float _launchDelay;
+    private float _delay;
     private int _nextActionTime = 0;
     private int _interval = 1;
-
-    private float _lastLaunchedTime = 0f;
+    private string _data = "";
+    private float _lastStatusChangeTime = 0f;
 
     public GameObject SFX;
     public GameObject Player;
@@ -20,17 +20,22 @@ public class LaunchStatusContent : MonoBehaviour {
             {
                 _nextActionTime += _interval;
 
-                DisplayText("Launching in " + (_launchDelay - ((int)Time.time - (int)_lastLaunchedTime)) + " ...");
+                if (!string.IsNullOrEmpty(_data))
+                {
+                    DisplayText(_data.Trim() + " " + (_delay - ((int)Time.time - (int)_lastStatusChangeTime)) + " ...");
+                }
             }
         }
     }
 
-    public void OnLaunchStatus(string data = "", int launchDelay = 0)
+    public void OnStatusChange(string data = "", int launchDelay = 0)
     {
+        _data = data;
+
         if (launchDelay > 0) 
         {
-            _launchDelay = launchDelay;
-            _lastLaunchedTime = Time.time;
+            _delay = launchDelay;
+            _lastStatusChangeTime = Time.time;
 
             _startCountdown = true;
         }
@@ -38,10 +43,7 @@ public class LaunchStatusContent : MonoBehaviour {
         {
             _startCountdown = false;
 
-            if (!string.IsNullOrEmpty(data))
-            {
-                DisplayText(data);
-            }
+            DisplayText(_data);
         }
     }
 
@@ -52,7 +54,7 @@ public class LaunchStatusContent : MonoBehaviour {
             text.text = data;
     }
 
-    public void OnLaunchSFXPlay(bool launch)
+    public void OnStatusSFXPlay(bool launch)
     {
         if (!launch || SFX == null)
             return;
