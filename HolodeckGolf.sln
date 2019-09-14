@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolodeckGolf", "Assembly-CSharp.csproj", "{EDD0FA62-71EB-5652-9858-A7D013B9E1EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{EDD0FA62-71EB-5652-9858-A7D013B9E1EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolodeckGolf", "Assembly-CSharp-Editor.csproj", "{20E9D6DB-4AC3-98CE-6C07-CC3759E3B623}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{20E9D6DB-4AC3-98CE-6C07-CC3759E3B623}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
