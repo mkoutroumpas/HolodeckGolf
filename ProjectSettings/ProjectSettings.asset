@@ -238,8 +238,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 7
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: E:/Projects/HolodeckGolf/HolodeckGolf/Keys/com.mk.vr.keystore
-  AndroidKeyaliasName: uploadforcommkvr
+  AndroidKeystoreName: E:/Projects/HolodeckGolf/HolodeckGolf/Keys/com.mk.vr.2.keystore
+  AndroidKeyaliasName: com.mk.vr
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
