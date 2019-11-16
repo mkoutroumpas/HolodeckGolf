@@ -9,20 +9,20 @@ public class FramerateCounter : MonoBehaviour {
 
     public IEnumerator Start()
     {
-        GUI.depth = 2;
+        //GUI.depth = 2;
         while (true)
         {
             if (Time.timeScale == 1)
             {
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.05f);
                 count = (1 / Time.deltaTime);
-                text.text = "FPS :" + (Mathf.Round(count));
+                text.text = "FPS : " + (Mathf.Round(count));
             }
             else
             {
                 text.text = "Pause";
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 }
